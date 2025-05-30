@@ -1,0 +1,42 @@
+import java.util.*;
+public class InterestCalculatorSwitch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1 for Simple Interest");
+        System.out.println("Enter 2 for Compound Interest");
+        int choice = sc.nextInt();
+
+        // Get inputs
+        System.out.print("Enter Principal amount: ");
+        double principal = sc.nextDouble();
+
+        System.out.print("Enter Rate of interest: ");
+        double rate = sc.nextDouble();
+
+        System.out.print("Enter Time (in years): ");
+        int time = sc.nextInt();
+
+        double interest;
+
+        switch (choice) {
+            case 1:
+                // Simple Interest
+                interest = (principal * rate * time) / 100;
+                System.out.println("Simple Interest = " + interest);
+                break;
+
+            case 2:
+                // Compound Interest using loop
+                double amount = principal;
+                for (int i = 1; i <= time; i++) {
+                    amount += (amount * rate) / 100;
+                }
+                interest = amount - principal;
+                System.out.println("Compound Interest = " + interest);
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please enter 1 or 2.");
+        }
+    }
+}
